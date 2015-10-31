@@ -94,3 +94,26 @@ You can think add as variable which only stored the return function expression:
 ```
 3. whenever add is executed, it will look for the outside scope variables ```counter```. Although IIFE's execution context get closed, since it is the parent
 scope of this return function, the add() will still get access to the variable `counter`. 
+
+###Every Day Application
+**setTimeout() function**
+
+```
+function sayHiIn3Sec() {
+    var msg = 'Hi';
+    setTimeout(function() {
+        console.log(msg);
+    }, 3000)
+}
+
+sayHiIn3Sec();
+```
+
+Here, the sayHiIn3Sec() execution context is opened and closed within a millisecond. However, the setTimeout function which calls the function expression
+
+```
+function() {
+        console.log(msg);
+    }
+```
+is only called after 3000 milli-seconds. Where is the variable `msg` coming from? Again, it is from its parent scope whose execution context has been closed.
